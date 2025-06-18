@@ -110,13 +110,17 @@ header li:hover{
 }
 .product-name{
     margin-top: 40px;
-    margin-left: 30px;
+    margin-right: 20%;
     font-size: 20px;
+    direction: rtl;
+    text-align: right;
 }
 .product-price{
-    margin-left: 30px;
+    margin-right: 21%;
     margin-top: 7px;
     font-size: 17px;
+    direction: rtl;
+    text-align: right;
 }
 /* خط تحرك الصور */
 .container::-webkit-scrollbar {
@@ -170,15 +174,19 @@ header li:hover{
 .img-container:hover .default-image{
     opacity: 0;
 }
-h3{
-    font-size: 20px;
+h1{
+    font-size: 22px;
     margin-top: 40px;
-    margin-left: 30px;
+    margin-right: 15%;
+    direction: rtl;
+    text-align: right;
 }
 section div p{
-    font-size: 15px;
+    font-size: 18px;
     margin-top: 10px;
-    margin-left: 30px;
+    margin-right: 15%;
+    direction: rtl;
+    text-align: right;
 }
 footer{
     width: 100%;
