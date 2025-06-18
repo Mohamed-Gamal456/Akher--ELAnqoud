@@ -1,0 +1,251 @@
+body{
+    background-color: rgb(253, 251, 251);
+    /* height: 5000px; */
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    direction: rtl;
+    text-align: right;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header{
+    width: 100%;
+    height: 70px;
+    top: 0;
+    position: fixed;
+    background-color: #eee;
+}
+.logo{
+    width: 10% ;
+    height: 30px;
+    margin-top: 17px;
+    margin-right: 40px;
+    font-size: x-large;
+    text-shadow: 0px 0px 4px #6e6e6e;
+}
+.nav-links{
+    width: 35%;
+    height: 50px;
+    margin-top: -37px;
+    margin-right: 220px;
+    list-style: none;
+    display: flex; 
+}
+.links{
+    display: flex;
+    gap:63px;
+    color: rgb(49 86 119 / 90%);  
+    cursor:pointer; 
+    list-style: none;
+    margin-top: 2px;
+    margin-left: -40px;
+    padding: 10px 5px;
+    font-size: 16px;
+}
+a{
+    text-decoration: none;
+    color: black;
+  }
+header li:hover{
+    background-color: #a3a3a4e6;
+    border-radius: 20%;
+    padding: 5px;
+    box-shadow: 5px 6px 0.8ch rgb(137, 132, 132);
+}
+.logo-main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 70px;
+    margin: 76px 10% 0px 10%;
+}
+h1.lo{
+    text-shadow: 4px 6px .4cap rgb(154, 152, 152);
+    font-size: 38px;
+    color: rgb(30, 30, 30);
+    letter-spacing: 2px;
+}
+.intro-section{
+    /* background-color: #6e6e6e; */
+    margin-top: 30px;
+    padding-right: 5%;
+    line-height: 180%;
+    font-size: x-large;
+    background-color: #f0eeee;
+}
+h2{
+    margin-top: 80px;
+    margin-right: 10%;
+    color: #404040;
+    font-size: x-large;
+}
+section img{
+    width: 100%;
+    height: 80%;
+    margin-top: 0;
+    border-radius: 5px;
+} 
+section div{
+    width: 300px;
+    height: 500px ;
+    background-color: #ffff;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 90px;
+}
+.colection-children{
+    width: 100%;
+    margin-top: 200px;
+}
+#container-child{
+    width: 98%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+section div img:hover{
+    transform: scale(1.04);
+    box-shadow: 1px 1px 1px #979da1;
+}
+section div p{
+    margin-right: 50px;
+}
+h3{
+    margin-right:20px;
+}
+.container{
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-left: 15px;
+    padding-top: 200px;
+}
+.product-card{
+    display: inline-block;
+    width: 350px;
+    height: 650px;
+    margin-right: 15px;
+    background-color: #fff;
+    vertical-align: top;
+    border-radius: 7px;
+    cursor: pointer;
+}
+.product-card img{
+    width: 100%;
+    height:500px;
+    border-radius: 7px;
+}
+.product-name{
+    margin-top: 40px;
+    margin-left: 30px;
+    font-size: 20px;
+}
+.product-price{
+    margin-left: 30px;
+    margin-top: 7px;
+    font-size: 17px;
+}
+/* خط تحرك الصور */
+.container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.container::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+.conclusion{
+    padding-top: 50px;
+    margin-top: 120px;
+    height: 150px;
+    padding-right: 5%;
+    line-height: 180%;
+    font-size: x-large;
+    background-color: #f0eeee;   
+}
+footer{
+    width: 100%;
+    height: 410px;
+    display: grid;
+    grid-template-columns: repeat(3,30%);
+    justify-content: space-evenly;
+    background-color: rgba(214, 215, 216, 0.9);
+    margin-top: 100px;
+}
+.by{
+    margin-left: 11px;
+}
+.about{
+    margin-left: 11px;
+}
+.contant{
+    margin-left: 11px;
+}
+h4{
+    margin-right:48%;
+    margin-top: 10%;
+}
+
+.by-links{
+    padding-top: 20px;
+    padding-right: 50px;
+}
+.by-links span{
+    display: block;
+    font-size: x-large;
+    margin-right:20%;
+
+}
+.by-links{
+    word-spacing: 5px;
+    line-height:1.9;
+    letter-spacing: 1.5px;
+}
+
+.by-links a:hover{
+    /* background-color: #afafaf; */
+    border-radius: 5px;
+    text-decoration: underline;
+}
+.about p{
+    margin-top: 25px;
+    margin-right: 20%;
+    font-size: 25px;
+    line-height: 38px;
+    word-spacing: 2px;
+}
+.contant-links{
+    padding: 25px;
+}
+.contant-links span{
+    display: block;
+    font-size: x-large;
+    margin-right:20%;
+
+}
+.contant-links{
+    word-spacing: 5px;
+    line-height:1.9;
+    letter-spacing: 1.5px;
+}
+.contant-link-a{
+    margin-right: 50px;
+}
+.contant-links a:hover{
+    /* background-color: #afafaf; */
+    border-radius: 5px;
+    text-decoration: underline;
+}
+.contant p{
+    font-size: x-large;
+    margin-right:20%;
+    word-spacing: 5px;   
+}
