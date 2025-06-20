@@ -2,12 +2,25 @@
 <html lang="ar">
     <head>
        <meta charset="UTF-8">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="متجر آخر العنقود يقدم ملابس عصرية للأطفال والنساء.">
        <link rel="stylesheet" href="product-child.css">
        <link rel="icon" href="image Ahar El Anqoud/image Home/android-chrome-192x192.png" type="image/x-icon">
        <title>اخر العنقود</title>
     </head>
     <body>
+                <!-- سلة الشراء -->
+        <div class="cart-container">
+            <button id="cart-btn">🛒 <span id="cart-count">0</span></button>
+        </div>
+        <div id="cart-modal" class="cart-modal hidden">
+            <h2>سلة التسوق</h2>
+            <div id="cart-items"></div>
+                    <div class="cart-footer">
+                <strong>الإجمالي: <span id="cart-total">0</span> EGP</strong>
+                <button id="clear-cart">افراغ السلة</button>
+            </div>
+        </div>
         <div class="header-up">
             <p class="logo-name">اخر العنقود</p>
             <div class="social-icons">
@@ -68,149 +81,130 @@
             </nav>
         </header>
         <div class="kabshan">ملابس اطفالي</div>
+        <div class="caption">ملابس اطفالي و حريمي</div>
         <div class="custom-gallery-wrapper">
             <div class="custom-gallery">
                 <div class="product-card">
                     <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-16 at 12.36.10_92179271.jpg" alt="صورة 1">
-                    <p class="discrbtive"> تيشيرت قطن 100% بجودة عالية، مريح في اللبس ومناسب للاستخدام اليومي</p>
+                    <button onclick="addToCart('طقم1 أطفال', 499)">أضف للسلة</button>
+                    <p class="discrbtive">تيشيرت ناعم وخفيف، بألوان جذابة تناسب كل الأذواق</p>
                     <p class="discrbtive-price">EGP 499</p>
                 </div>
                 <div class="product-card">
                     <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.53_7e7c4ddb.jpg" alt="صورة 2">
-                    <p class="discrbtive">تيشيرت ناعم وخفيف، بألوان جذابة تناسب كل الأذواق.</p>
+                    <button onclick="addToCart('طقم2 أطفال', 379)">أضف للسلة</button>
+                    <p class="discrbtive">خامة ممتازة بسعر اقتصادي. راحة وأناقة في قطعة واحدة!</p>
                     <p class="discrbtive-price">EGP 379</p>
                 </div>
                 <div class="product-card">
                     <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.51_61d866f0.jpg" alt="صورة 3">
-                    <p class="discrbtive">خامة ممتازة بسعر اقتصادي. راحة وأناقة في قطعة واحدة! مكسيع يبمع عبيىاست ينبتىت نيتبىلت نيبتلى</p>
+                     <button onclick="addToCart('بنطلون قماش', 429)">أضف للسلة</button>
+                    <p class="discrbtive">>تيشيرت قطن 100% بجودة عالية، مريح في اللبس ومناسب للاستخدام اليومي</p>
                     <p class="discrbtive-price">EGP 429</p>
                 </div>  
                 <div class="product-card">
                     <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-16 at 12.36.10_92179271.jpg" alt="صورة 1">
-                    <p class="discrbtive">حذاء رياضي رجالي </p>
+                    <button onclick="addToCart('طقم1 أطفال', 499)">أضف للسلة</button>
+                    <p class="discrbtive">تيشيرت ناعم وخفيف، بألوان جذابة تناسب كل الأذواق</p>
                     <p class="discrbtive-price">EGP 499</p>
                 </div>
                 <div class="product-card">
                     <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.53_7e7c4ddb.jpg" alt="صورة 2">
-                    <p class="discrbtive">حذاء كاجوال أبيض</p>
+                    <button onclick="addToCart('طقم2 أطفال', 379)">أضف للسلة</button>
+                    <p class="discrbtive">خامة ممتازة بسعر اقتصادي. راحة وأناقة في قطعة واحدة!</p>
+                    <p class="discrbtive-price">EGP 379</p>
+                </div>
+                <div class="product-card">
+                    <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.53_7e7c4ddb.jpg" alt="صورة 2">
+                    <button onclick="addToCart('طقم2 أطفال', 379)">أضف للسلة</button>
+                    <p class="discrbtive">خامة ممتازة بسعر اقتصادي. راحة وأناقة في قطعة واحدة!</p>
                     <p class="discrbtive-price">EGP 379</p>
                 </div>
                 <div class="product-card">
                     <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.51_61d866f0.jpg" alt="صورة 3">
-                    <p class="discrbtive">سنيكرز شبابي</p>
+                     <button onclick="addToCart('بنطلون قماش', 429)">أضف للسلة</button>
+                    <p class="discrbtive">>تيشيرت قطن 100% بجودة عالية، مريح في اللبس ومناسب للاستخدام اليومي</p>
                     <p class="discrbtive-price">EGP 429</p>
                 </div>  
                 <div class="product-card">
                     <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-16 at 12.36.10_92179271.jpg" alt="صورة 1">
-                    <p class="discrbtive">حذاء رياضي رجالي </p>
+                    <button onclick="addToCart('طقم1 أطفال', 499)">أضف للسلة</button>
+                    <p class="discrbtive">تيشيرت ناعم وخفيف، بألوان جذابة تناسب كل الأذواق</p>
                     <p class="discrbtive-price">EGP 499</p>
                 </div>
                 <div class="product-card">
                     <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.53_7e7c4ddb.jpg" alt="صورة 2">
-                    <p class="discrbtive">حذاء كاجوال أبيض</p>
+                    <button onclick="addToCart('طقم2 أطفال', 379)">أضف للسلة</button>
+                    <p class="discrbtive">خامة ممتازة بسعر اقتصادي. راحة وأناقة في قطعة واحدة!</p>
+                    <p class="discrbtive-price">EGP 379</p>
+                </div>
+                <div class="product-card">
+                    <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.53_7e7c4ddb.jpg" alt="صورة 2">
+                    <button onclick="addToCart('طقم2 أطفال', 379)">أضف للسلة</button>
+                    <p class="discrbtive">خامة ممتازة بسعر اقتصادي. راحة وأناقة في قطعة واحدة!</p>
                     <p class="discrbtive-price">EGP 379</p>
                 </div>
                 <div class="product-card">
                     <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.51_61d866f0.jpg" alt="صورة 3">
-                    <p class="discrbtive">سنيكرز شبابي</p>
+                     <button onclick="addToCart('بنطلون قماش', 429)">أضف للسلة</button>
+                    <p class="discrbtive">>تيشيرت قطن 100% بجودة عالية، مريح في اللبس ومناسب للاستخدام اليومي</p>
                     <p class="discrbtive-price">EGP 429</p>
                 </div>  
                 <div class="product-card">
                     <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-16 at 12.36.10_92179271.jpg" alt="صورة 1">
-                    <p class="discrbtive">حذاء رياضي رجالي </p>
+                    <button onclick="addToCart('طقم1 أطفال', 499)">أضف للسلة</button>
+                    <p class="discrbtive">تيشيرت ناعم وخفيف، بألوان جذابة تناسب كل الأذواق</p>
                     <p class="discrbtive-price">EGP 499</p>
                 </div>
                 <div class="product-card">
                     <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.53_7e7c4ddb.jpg" alt="صورة 2">
-                    <p class="discrbtive">حذاء كاجوال أبيض</p>
+                    <button onclick="addToCart('طقم2 أطفال', 379)">أضف للسلة</button>
+                    <p class="discrbtive">خامة ممتازة بسعر اقتصادي. راحة وأناقة في قطعة واحدة!</p>
                     <p class="discrbtive-price">EGP 379</p>
                 </div>
                 <div class="product-card">
                     <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.51_61d866f0.jpg" alt="صورة 3">
-                    <p class="discrbtive">سنيكرز شبابي</p>
+                     <button onclick="addToCart('بنطلون قماش', 429)">أضف للسلة</button>
+                    <p class="discrbtive">>تيشيرت قطن 100% بجودة عالية، مريح في اللبس ومناسب للاستخدام اليومي</p>
                     <p class="discrbtive-price">EGP 429</p>
                 </div>  
                 <div class="product-card">
                     <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-16 at 12.36.10_92179271.jpg" alt="صورة 1">
-                    <p class="discrbtive">حذاء رياضي رجالي </p>
+                    <button onclick="addToCart('طقم1 أطفال', 499)">أضف للسلة</button>
+                    <p class="discrbtive">تيشيرت ناعم وخفيف، بألوان جذابة تناسب كل الأذواق</p>
                     <p class="discrbtive-price">EGP 499</p>
                 </div>
                 <div class="product-card">
                     <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.53_7e7c4ddb.jpg" alt="صورة 2">
-                    <p class="discrbtive">حذاء كاجوال أبيض</p>
+                    <button onclick="addToCart('طقم2 أطفال', 379)">أضف للسلة</button>
+                    <p class="discrbtive">خامة ممتازة بسعر اقتصادي. راحة وأناقة في قطعة واحدة!</p>
                     <p class="discrbtive-price">EGP 379</p>
                 </div>
                 <div class="product-card">
                     <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.51_61d866f0.jpg" alt="صورة 3">
-                    <p class="discrbtive">سنيكرز شبابي</p>
+                     <button onclick="addToCart('بنطلون قماش', 429)">أضف للسلة</button>
+                    <p class="discrbtive">>تيشيرت قطن 100% بجودة عالية، مريح في اللبس ومناسب للاستخدام اليومي</p>
                     <p class="discrbtive-price">EGP 429</p>
                 </div>  
                 <div class="product-card">
                     <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-16 at 12.36.10_92179271.jpg" alt="صورة 1">
-                    <p class="discrbtive">حذاء رياضي رجالي </p>
+                    <button onclick="addToCart('طقم1 أطفال', 499)">أضف للسلة</button>
+                    <p class="discrbtive">تيشيرت ناعم وخفيف، بألوان جذابة تناسب كل الأذواق</p>
                     <p class="discrbtive-price">EGP 499</p>
                 </div>
                 <div class="product-card">
                     <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.53_7e7c4ddb.jpg" alt="صورة 2">
-                    <p class="discrbtive">حذاء كاجوال أبيض</p>
+                    <button onclick="addToCart('طقم2 أطفال', 379)">أضف للسلة</button>
+                    <p class="discrbtive">خامة ممتازة بسعر اقتصادي. راحة وأناقة في قطعة واحدة!</p>
                     <p class="discrbtive-price">EGP 379</p>
                 </div>
                 <div class="product-card">
                     <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.51_61d866f0.jpg" alt="صورة 3">
-                    <p class="discrbtive">سنيكرز شبابي</p>
+                     <button onclick="addToCart('بنطلون قماش', 429)">أضف للسلة</button>
+                    <p class="discrbtive">>تيشيرت قطن 100% بجودة عالية، مريح في اللبس ومناسب للاستخدام اليومي</p>
                     <p class="discrbtive-price">EGP 429</p>
                 </div>  
-                <div class="product-card">
-                    <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-16 at 12.36.10_92179271.jpg" alt="صورة 1">
-                    <p class="discrbtive">حذاء رياضي رجالي </p>
-                    <p class="discrbtive-price">EGP 499</p>
-                </div>
-                <div class="product-card">
-                    <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.53_7e7c4ddb.jpg" alt="صورة 2">
-                    <p class="discrbtive">حذاء كاجوال أبيض</p>
-                    <p class="discrbtive-price">EGP 379</p>
-                </div>
-                <div class="product-card">
-                    <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.51_61d866f0.jpg" alt="صورة 3">
-                    <p class="discrbtive">سنيكرز شبابي</p>
-                    <p class="discrbtive-price">EGP 429</p>
-                </div>  
-                <div class="product-card">
-                    <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-16 at 12.36.10_92179271.jpg" alt="صورة 1">
-                    <p class="discrbtive">حذاء رياضي رجالي </p>
-                    <p class="discrbtive-price">EGP 499</p>
-                </div>
-                <div class="product-card">
-                    <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.53_7e7c4ddb.jpg" alt="صورة 2">
-                    <p class="discrbtive">حذاء كاجوال أبيض سنيكرز شبابي حذاء رياضي رجالي سنيكرز شبابي </p>
-                    <p class="discrbtive-price">EGP 379</p>
-                </div>
-                <div class="product-card">
-                    <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.51_61d866f0.jpg" alt="صورة 3">
-                    <p class="discrbtive">سنيكرز شبابي حذاء رياضي رجالي سنيكرز شبابي </p>
-                    <p class="discrbtive-price">EGP 429</p>
-                </div>  
-                <div class="product-card">
-                    <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-16 at 12.36.10_92179271.jpg" alt="صورة 1">
-                    <p class="discrbtive">حذاء رياضي رجالي سنيكرز شبابي </p>
-                    <p class="discrbtive-price">EGP 499</p>
-                </div>
-                <div class="product-card">
-                    <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-16 at 12.36.10_92179271.jpg" alt="صورة 1">
-                    <p class="discrbtive">حذاء رياضي رجالي سنيكرز شبابي </p>
-                    <p class="discrbtive-price">EGP 499</p>
-                </div>
-                <div class="product-card">
-                    <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.53_7e7c4ddb.jpg" alt="صورة 2">
-                    <p class="discrbtive">حذاء كاجوال أبيض</p>
-                    <p class="discrbtive-price">EGP 379</p>
-                </div>
-                <div class="product-card">
-                    <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.51_61d866f0.jpg" alt="صورة 3">
-                    <p class="discrbtive">سنيكرز شبابي</p>
-                    <p class="discrbtive-price">EGP 429</p>
-                </div>  
-            </div>
+            </div>    
         </div>
         <div class="kids-caption">
             <h2>اكتشفوا عالم الأناقة والراحة لأطفالكم!</h2>
@@ -245,5 +239,82 @@
                 <P>العنوان: الوسطي شارع ...</P>
             </div>
         </footer>
+        <script>
+  // 🛒 كود السلة الأساسي (زي ما انت كتبته)
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  function updateCartDisplay() {
+    const cartItems = document.getElementById("cart-items");
+    const cartTotal = document.getElementById("cart-total");
+    const cartCount = document.getElementById("cart-count");
+
+    cartItems.innerHTML = "";
+    let total = 0;
+    let count = 0;
+
+    cart.forEach((item, index) => {
+      total += item.price * item.quantity;
+      count += item.quantity;
+
+      const itemDiv = document.createElement("div");
+      itemDiv.classList.add("cart-item");
+      itemDiv.innerHTML = `
+        <span>${item.name} (${item.quantity})</span>
+        <span>${item.price * item.quantity} EGP</span>
+        <button onclick="removeItem(${index})">❌</button>
+      `;
+      cartItems.appendChild(itemDiv);
+    });
+
+    cartTotal.textContent = total;
+    cartCount.textContent = count;
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
+
+  function addToCart(name, price) {
+    const existing = cart.find(item => item.name === name);
+    if (existing) {
+      existing.quantity += 1;
+    } else {
+      cart.push({ name, price, quantity: 1 });
+    }
+    updateCartDisplay();
+  }
+
+  function removeItem(index) {
+    cart.splice(index, 1);
+    updateCartDisplay();
+  }
+
+  document.getElementById("clear-cart").addEventListener("click", () => {
+    cart = [];
+    updateCartDisplay();
+  });
+
+  document.getElementById("cart-btn").addEventListener("click", () => {
+    document.getElementById("cart-modal").classList.toggle("show");
+  });
+
+  updateCartDisplay();
+
+  // 👇 كود إخفاء الزر عند النزول وظهوره عند الصعود
+  let lastScrollTop = 0;
+  const cartContainer = document.querySelector('.cart-container');
+
+  window.addEventListener("scroll", function () {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > lastScrollTop) {
+      cartContainer.style.opacity = "0";
+      cartContainer.style.pointerEvents = "none";
+    } else {
+      cartContainer.style.opacity = "1";
+      cartContainer.style.pointerEvents = "auto";
+    }
+
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+  }, false);
+</script>
     </body>
 </html>
