@@ -22,11 +22,17 @@
                 <button id="clear-cart">افراغ السلة</button>
             </div>
         </div>
-        <header>
-            <div class="header-up">
-                <p class="logo-name">اخر العنقود</p>
+        <div class="header-up">
+               <a href="index.html">
+                    <img src="image Ahar El Anqoud/main-logo.png" alt="Carrot Logo" class="main-logo">
+                </a>
 
                 <div class="social-icons">
+                    <a href="https://wa.me/201015393524" target="_blank" aria-label="WhatsApp" class="icon whatsapp">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor">
+                            <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 512l141-37c32.7 17.8 69.4 27.2 106.8 27.2 122.4 0 222-99.6 222-222 0-59.3-23-115.1-64.9-157.1zM223.9 474.5c-33.1 0-65.6-8.9-93.9-25.7l-6.7-4-69.8 18.3 18.7-68.1-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.5-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 54 81.2 54 130.4 0 101.7-82.8 184.5-184.5 184.5zm101.1-138.2c-5.5-2.8-32.8-16.2-37.9-18s-8.8-2.8-12.4 2.8-14.1 18-17.2 21.6-6.3 4.1-11.7 1.3c-5.5-2.8-23.1-8.5-44-27.1-16.2-14.5-27.2-32.3-30.3-37.9s-.3-8.6 2.5-11.4c2.5-2.5 5.5-6.5 8.3-9.7s3.7-5.5 5.5-9.3 1-7.1-.5-9.9-12.4-29.9-17-40.9c-4.5-10.7-9.1-9.2-12.4-9.4l-10.6-.2c-3.7 0-9.7 1.4-14.8 6.9s-19.4 19-19.4 46.3 20 53.5 22.8 57.2 39.3 60 95.3 84.1c13.3 5.7 23.7 9.1 31.9 11.7 13.4 4.3 25.6 3.7 35.2 2.2 10.7-1.6 32.8-13.4 37.4-26.4s4.6-24.1 3.2-26.4-5.5-4.2-11-7z"/>
+                        </svg>
+                    </a>
                     <a href="https://www.facebook.com/share/1JNJjoppas/" target="_blank" aria-label="Facebook" class="icon facebook">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" fill="currentColor">
                             <path d="M279.14 288l14.22-92.66h-88.91V127.5c0-25.35 12.42-50.06 52.24-50.06H293V6.26S259.5 0 225.36 0C141.09 
@@ -72,41 +78,37 @@
                     </a>
             </div>
             </div>
+        <header>
+        
             <div class="header-container">
-                <div class="header-right">
-                    <nav class="main-nav">
-                        <ul>
-                            <li><a href="index.html">الرئيسية</a></li>
-                            <li><a href="product-child.html">أولادي</a></li>
-                            <li><a href="product-girls.html">بناتي</a></li>
-                            <li><a href="product-women.html">النساء</a></li>
-                            <li> <a href="contact.html">اتصل بنا</a></li>
-                        </ul>
-                    </nav>
-                    
-                </div>
-                
-
-                <div class="header-center">
-                    <a href="index.html">
-                        <img src="image Ahar El Anqoud/logo.png" alt="Carrot Logo" class="main-logo">
-                    </a>
-                </div>
                 <div class="header-left">
                     <div class="cart-wrapper">
                         <a href="#" class="cart-btn1">🛒 طلباتي</a>
                     </div>
-                    
-                </div>
-                <div class="menu-toggle" id="mobile-menu-btn">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        </div>
-                    </div>
+                    <a href="contact.html" class="contact-link">اتصل بنا</a>
                 </div>
 
-                <div class="overlay" id="overlay"></div>
+                <div class="header-center">
+                    <a href="index.html">
+                        <img src="image Ahar El Anqoud/logo.png" alt="Carrot Logo" class="logo">
+                    </a>
+                </div>
+
+                <div class="header-right">
+                    <div class="menu-toggle" id="mobile-menu-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <nav class="main-nav">
+                        <ul>
+                            <li><a href="product-women.html">النساء</a></li>
+                            <li><a href="product-girls.html">بناتي</a></li>
+                            <li><a href="product-child.html">أولادي</a></li>
+                            <li><a href="index.html">الرئيسية</a></li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </header>
         <div class="slider">
@@ -257,134 +259,152 @@
             </div>
         </footer>
         <script>
-  // 🛒 كود السلة الأساسي (زي ما انت كتبته)
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            // -------- إخفاء الهيدر العلوي عند النزول --------
+            let lastScroll = 0;
+            const headerUp = document.querySelector('.header-up');
 
-  function updateCartDisplay() {
-    const cartItems = document.getElementById("cart-items");
-    const cartTotal = document.getElementById("cart-total");
-    const cartCount = document.getElementById("cart-count");
+            window.addEventListener("scroll", () => {
+                let currentScroll = window.pageYOffset;
 
-    cartItems.innerHTML = "";
-    let total = 0;
-    let count = 0;
+                if (currentScroll > lastScroll && currentScroll > 50) {
+                    // نزول
+                    headerUp.classList.add("hide");
+                } else {
+                    // صعود
+                    headerUp.classList.remove("hide");
+                }
 
-    cart.forEach((item, index) => {
-      total += item.price * item.quantity;
-      count += item.quantity;
+                lastScroll = currentScroll;
+            });
+            // 🛒 كود السلة الأساسي (زي ما انت كتبته)
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-      const itemDiv = document.createElement("div");
-      itemDiv.classList.add("cart-item");
-      itemDiv.innerHTML = `
-        <span>${item.name} (${item.quantity})</span>
-        <span>${item.price * item.quantity} EGP</span>
-        <button onclick="removeItem(${index})">❌</button>
-      `;
-      cartItems.appendChild(itemDiv);
-    });
+            function updateCartDisplay() {
+                const cartItems = document.getElementById("cart-items");
+                const cartTotal = document.getElementById("cart-total");
+                const cartCount = document.getElementById("cart-count");
 
-    cartTotal.textContent = total;
-    cartCount.textContent = count;
+                cartItems.innerHTML = "";
+                let total = 0;
+                let count = 0;
 
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }
+                cart.forEach((item, index) => {
+                total += item.price * item.quantity;
+                count += item.quantity;
 
-  function addToCart(name, price) {
-    const existing = cart.find(item => item.name === name);
-    if (existing) {
-      existing.quantity += 1;
-    } else {
-      cart.push({ name, price, quantity: 1 });
-    }
-    updateCartDisplay();
-  }
+                const itemDiv = document.createElement("div");
+                itemDiv.classList.add("cart-item");
+                itemDiv.innerHTML = `
+                    <span>${item.name} (${item.quantity})</span>
+                    <span>${item.price * item.quantity} EGP</span>
+                    <button onclick="removeItem(${index})">❌</button>
+                `;
+                cartItems.appendChild(itemDiv);
+                });
 
-  function removeItem(index) {
-    cart.splice(index, 1);
-    updateCartDisplay();
-  }
+                cartTotal.textContent = total;
+                cartCount.textContent = count;
 
-  document.getElementById("clear-cart").addEventListener("click", () => {
-    cart = [];
-    updateCartDisplay();
-  });
+                localStorage.setItem("cart", JSON.stringify(cart));
+            }
 
-  document.getElementById("cart-btn").addEventListener("click", () => {
-    document.getElementById("cart-modal").classList.toggle("show");
-  });
+            function addToCart(name, price) {
+                const existing = cart.find(item => item.name === name);
+                if (existing) {
+                existing.quantity += 1;
+                } else {
+                cart.push({ name, price, quantity: 1 });
+                }
+                updateCartDisplay();
+            }
 
-  updateCartDisplay();
+            function removeItem(index) {
+                cart.splice(index, 1);
+                updateCartDisplay();
+            }
 
-  // 👇 كود إخفاء الزر عند النزول وظهوره عند الصعود
-  let lastScrollTop = 0;
-  const cartContainer = document.querySelector('.cart-container');
+            document.getElementById("clear-cart").addEventListener("click", () => {
+                cart = [];
+                updateCartDisplay();
+            });
 
-  window.addEventListener("scroll", function () {
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            document.getElementById("cart-btn").addEventListener("click", () => {
+                document.getElementById("cart-modal").classList.toggle("show");
+            });
 
-    if (scrollTop > lastScrollTop) {
-      cartContainer.style.opacity = "0";
-      cartContainer.style.pointerEvents = "none";
-    } else {
-      cartContainer.style.opacity = "1";
-      cartContainer.style.pointerEvents = "auto";
-    }
+            updateCartDisplay();
 
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-  }, false);
-  //-------- نظام السلايدر المتكامل -----------//
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
+            // 👇 كود إخفاء الزر عند النزول وظهوره عند الصعود
+            let lastScrollTop = 0;
+            const cartContainer = document.querySelector('.cart-container');
 
-    function showSlide(index) {
-        // إزالة الكلاس من الجميع
-        slides.forEach(slide => slide.classList.remove('active'));
+            window.addEventListener("scroll", function () {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-        // ضبط الـ index
-        currentSlide = index;
-        if (currentSlide >= slides.length) currentSlide = 0;
-        if (currentSlide < 0) currentSlide = slides.length - 1;
+                if (scrollTop > lastScrollTop) {
+                cartContainer.style.opacity = "0";
+                cartContainer.style.pointerEvents = "none";
+                } else {
+                cartContainer.style.opacity = "1";
+                cartContainer.style.pointerEvents = "auto";
+                }
 
-        // إضافة الكلاس للشريحة المطلوبة
-        slides[currentSlide].classList.add('active');
-    }
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            }, false);
+            //-------- نظام السلايدر المتكامل -----------//
+                let currentSlide = 0;
+                const slides = document.querySelectorAll('.slide');
 
-    function changeSlide(direction) {
-        showSlide(currentSlide + direction);
-        resetAutoScroll();
-    }
+                function showSlide(index) {
+                    // إزالة الكلاس من الجميع
+                    slides.forEach(slide => slide.classList.remove('active'));
 
-    // التبديل التلقائي
-    let autoScroll = setInterval(() => changeSlide(1), 5000);
+                    // ضبط الـ index
+                    currentSlide = index;
+                    if (currentSlide >= slides.length) currentSlide = 0;
+                    if (currentSlide < 0) currentSlide = slides.length - 1;
 
-    function resetAutoScroll() {
-        clearInterval(autoScroll);
-        autoScroll = setInterval(() => changeSlide(1), 5000);
-    }
-    // --------------- المنيو-----------------------
-    const menuBtn = document.getElementById('mobile-menu-btn');
-    const navMenu = document.querySelector('.header-right');
-    const overlay = document.getElementById('overlay');
+                    // إضافة الكلاس للشريحة المطلوبة
+                    slides[currentSlide].classList.add('active');
+                }
 
-    // فتح وإغلاق المنيو
-    menuBtn.addEventListener('click', () => {
-        navMenu.classList.add('active');
-        overlay.classList.add('show');
-    });
+                function changeSlide(direction) {
+                    showSlide(currentSlide + direction);
+                    resetAutoScroll();
+                }
 
-    // إغلاق المنيو عند الضغط على التعتيم (خارج المنيو)
-    overlay.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        overlay.classList.remove('show');
-    });
+                // التبديل التلقائي
+                let autoScroll = setInterval(() => changeSlide(1), 5000);
 
-    // إغلاق المنيو تلقائياً عند الضغط على أي رابط داخلها
-    document.querySelectorAll('.main-nav a').forEach(link => {
-        link.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-            overlay.classList.remove('show');
-        });
-    });
-</script>    
+                function resetAutoScroll() {
+                    clearInterval(autoScroll);
+                    autoScroll = setInterval(() => changeSlide(1), 5000);
+                }
+                // --------------- المنيو المنسدلة لأسفل -----------------------
+                const menuBtn = document.getElementById('mobile-menu-btn');
+                const mainNav = document.querySelector('.main-nav');
+
+                // عند الضغط على زر المنيو (الثلاث شرط)
+                menuBtn.addEventListener('click', (e) => {
+                    e.stopPropagation(); // منع غلق المنيو فوراً عند الضغط على الزر نفسه
+                    mainNav.classList.toggle('active');
+                });
+
+                // إغلاق المنيو عند الضغط على أي رابط بداخلها
+                document.querySelectorAll('.main-nav a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mainNav.classList.remove('active');
+                    });
+                });
+
+                // إغلاق المنيو تلقائياً إذا ضغط المستخدم في أي مكان خارجها
+                document.addEventListener('click', (event) => {
+                    const isClickInside = mainNav.contains(event.target) || menuBtn.contains(event.target);
+                    
+                    if (!isClickInside && mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                    }
+                });
+    </script>    
     </body>
 </html>
