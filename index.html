@@ -5,6 +5,7 @@
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="متجر آخر العنقود يقدم ملابس عصرية للأطفال والنساء.">
        <link rel="stylesheet" href="home.css">
+       <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
        <link rel="icon" href="image Ahar El Anqoud/image Home/android-chrome-192x192.png" type="image/x-icon">
        <title>اخر العنقود</title>
     </head>
@@ -24,6 +25,7 @@
         <header>
             <div class="header-up">
                 <p class="logo-name">اخر العنقود</p>
+
                 <div class="social-icons">
                     <a href="https://www.facebook.com/share/1JNJjoppas/" target="_blank" aria-label="Facebook" class="icon facebook">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" fill="currentColor">
@@ -70,21 +72,76 @@
                     </a>
             </div>
             </div>
-            <div class="logo-logo">
-                <a href="index.html"><img src="image Ahar El Anqoud/image Home/android-chrome-192x192.png" alt="logo Ahar EL Anqoud"></a>
+            <div class="header-container">
+                <div class="header-right">
+                    <nav class="main-nav">
+                        <ul>
+                            <li><a href="index.html">الرئيسية</a></li>
+                            <li><a href="product-child.html">أولادي</a></li>
+                            <li><a href="product-girls.html">بناتي</a></li>
+                            <li><a href="product-women.html">النساء</a></li>
+                            <li> <a href="contact.html">اتصل بنا</a></li>
+                        </ul>
+                    </nav>
+                    
+                </div>
+                
+
+                <div class="header-center">
+                    <a href="index.html">
+                        <img src="image Ahar El Anqoud/logo.png" alt="Carrot Logo" class="main-logo">
+                    </a>
+                </div>
+                <div class="header-left">
+                    <div class="cart-wrapper">
+                        <a href="#" class="cart-btn1">🛒 طلباتي</a>
+                    </div>
+                    
+                </div>
+                <div class="menu-toggle" id="mobile-menu-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="overlay" id="overlay"></div>
             </div>
-            <nav class="nav-links">
-                <ul>
-                    <li><a href="product-women.html" > النساء</a></li>
-                    <li><a href="product-child.html" >الاطفال</a></li>
-                    <li><a href="index.html" >الصفحة الرئيسية</a></li>
-                </ul>           
-            </nav>
         </header>
         <div class="slider">
-                <img src="image Ahar El Anqoud/WhatsApp Image 2025-06-19 at 13.55.34_93a4a8a2.jpg" class="slide" alt="image">
-                <img src="image Ahar El Anqoud/WhatsApp Image 2025-06-19 at 13.55.35_d3335964.jpg" class="slide" alt="image">
-                <img src="image Ahar El Anqoud/WhatsApp Image 2025-06-19 at 13.57.14_a19bb0cf.jpg" class="slide" alt="image">
+            <div class="slider-arrow prev" onclick="changeSlide(-1)">&#10094;</div>
+            <div class="slider-arrow next" onclick="changeSlide(1)">&#10095;</div>
+
+            <div class="slide active">
+                <img src="image Ahar El Anqoud/WhatsApp Image 2025-06-19 at 13.55.35_d3335964.jpg" alt="أناقة الأولاد">
+                <div class="hero-text">
+                    <h1>أناقة الخريف والشتاء</h1>
+                    <p>تجتمع في تصاميمنا الجديدة للأطفال!</p>
+                    <span>تشكيلة خريف / شتاء 2026</span>
+                    <a href="product-child.html" class="btn-shop">تسوق الآن</a>
+                </div>
+            </div>
+
+            <div class="slide">
+                <img src="image Ahar El Anqoud/WhatsApp Image 2025-06-19 at 13.55.34_93a4a8a2.jpg" alt="كولكشن البنات">
+                <div class="hero-text">
+                    <h1>للأميرات الصغيرات</h1>
+                    <p>تصاميم رائعة لخريف وشتاء 2026!</p>
+                    <span>مجموعة خريف / شتاء 2026</span>
+                    <a href="product-women.html" class="btn-shop">تسوق الآن</a>
+                </div>
+            </div>
+
+            <div class="slide">
+                <img src="image Ahar El Anqoud/WhatsApp Image 2025-06-19 at 13.57.14_a19bb0cf.jpg" alt="كولكشن البنات">
+                <div class="hero-text">
+                    <h1>للأميرات الصغيرات</h1>
+                    <p>تصاميم رائعة لخريف وشتاء 2026!</p>
+                    <span>مجموعة خريف / شتاء 2026</span>
+                    <a href="product-women.html" class="btn-shop">تسوق الآن</a>
+                </div>
+            </div>
         </div>
         <div class="caption">ملابس اطفالي و حريمي</div>
         <div class="custom-gallery-wrapper">
@@ -275,6 +332,59 @@
 
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
   }, false);
+  //-------- نظام السلايدر المتكامل -----------//
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function showSlide(index) {
+        // إزالة الكلاس من الجميع
+        slides.forEach(slide => slide.classList.remove('active'));
+
+        // ضبط الـ index
+        currentSlide = index;
+        if (currentSlide >= slides.length) currentSlide = 0;
+        if (currentSlide < 0) currentSlide = slides.length - 1;
+
+        // إضافة الكلاس للشريحة المطلوبة
+        slides[currentSlide].classList.add('active');
+    }
+
+    function changeSlide(direction) {
+        showSlide(currentSlide + direction);
+        resetAutoScroll();
+    }
+
+    // التبديل التلقائي
+    let autoScroll = setInterval(() => changeSlide(1), 5000);
+
+    function resetAutoScroll() {
+        clearInterval(autoScroll);
+        autoScroll = setInterval(() => changeSlide(1), 5000);
+    }
+    // --------------- المنيو-----------------------
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const navMenu = document.querySelector('.header-right');
+    const overlay = document.getElementById('overlay');
+
+    // فتح وإغلاق المنيو
+    menuBtn.addEventListener('click', () => {
+        navMenu.classList.add('active');
+        overlay.classList.add('show');
+    });
+
+    // إغلاق المنيو عند الضغط على التعتيم (خارج المنيو)
+    overlay.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        overlay.classList.remove('show');
+    });
+
+    // إغلاق المنيو تلقائياً عند الضغط على أي رابط داخلها
+    document.querySelectorAll('.main-nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            overlay.classList.remove('show');
+        });
+    });
 </script>    
     </body>
 </html>
