@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ar">
+    <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="متجر آخر العنقود يقدم ملابس عصرية للأطفال والنساء.">
+        <link rel="stylesheet" href="Style/product-child.css">
+        <link rel="stylesheet" href="Style/Cloud.css">
+        <link rel="stylesheet" href="Style/header.css">
+        <link rel="stylesheet" href="Style/footer.css">
+        <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link rel="icon" href="image Ahar El Anqoud/main-logo.png" type="image/x-icon">
+        <title>اخر العنقود</title>
+    </head>
+    <body>
+                <!-- سلة الشراء -->
+        <div class="cart-container">
+            <button id="cart-btn">🛒 <span id="cart-count">0</span></button>
+        </div>
+        <div id="cart-modal" class="cart-modal hidden">
+            <h2>سلة التسوق</h2>
+            <div id="cart-items"></div>
+                    <div class="cart-footer">
+                <strong>الإجمالي: <span id="cart-total">0</span> EGP</strong>
+                <button id="clear-cart">افراغ السلة</button>
+            </div>
+        </div>
+        <div class="header-up">
+               <a href="index.html">
+                    <img src="image Ahar El Anqoud/main-logo.png" alt="Carrot Logo" class="main-logo">
+                </a>
+
+                <div class="social-icons">
+                    <a href="https://wa.me/201015393524" target="_blank" aria-label="WhatsApp" class="icon whatsapp">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor">
+                            <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 512l141-37c32.7 17.8 69.4 27.2 106.8 27.2 122.4 0 222-99.6 222-222 0-59.3-23-115.1-64.9-157.1zM223.9 474.5c-33.1 0-65.6-8.9-93.9-25.7l-6.7-4-69.8 18.3 18.7-68.1-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.5-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 54 81.2 54 130.4 0 101.7-82.8 184.5-184.5 184.5zm101.1-138.2c-5.5-2.8-32.8-16.2-37.9-18s-8.8-2.8-12.4 2.8-14.1 18-17.2 21.6-6.3 4.1-11.7 1.3c-5.5-2.8-23.1-8.5-44-27.1-16.2-14.5-27.2-32.3-30.3-37.9s-.3-8.6 2.5-11.4c2.5-2.5 5.5-6.5 8.3-9.7s3.7-5.5 5.5-9.3 1-7.1-.5-9.9-12.4-29.9-17-40.9c-4.5-10.7-9.1-9.2-12.4-9.4l-10.6-.2c-3.7 0-9.7 1.4-14.8 6.9s-19.4 19-19.4 46.3 20 53.5 22.8 57.2 39.3 60 95.3 84.1c13.3 5.7 23.7 9.1 31.9 11.7 13.4 4.3 25.6 3.7 35.2 2.2 10.7-1.6 32.8-13.4 37.4-26.4s4.6-24.1 3.2-26.4-5.5-4.2-11-7z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.facebook.com/share/1JNJjoppas/" target="_blank" aria-label="Facebook" class="icon facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" fill="currentColor">
+                            <path d="M279.14 288l14.22-92.66h-88.91V127.5c0-25.35 12.42-50.06 52.24-50.06H293V6.26S259.5 0 225.36 0C141.09 
+      0 89.09 54.42 89.09 154.43V195.3H0v92.66h89.09V512h107.82V288z"/>
+                        </svg>
+                    </a>
+
+                    <a href="https://www.instagram.com/yourprofile" target="_blank" aria-label="Instagram" class="icon instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor">
+                        <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9S160.5 370.9 224.1 
+      370.9 339 319.6 339 255.9 287.7 141 224.1 141zm0 
+      186.6c-39.6 0-71.7-32.1-71.7-71.7s32.1-71.7 
+      71.7-71.7 71.7 32.1 71.7 71.7-32.1 71.7-71.7 
+      71.7zm146.4-194.3c0 14.9-12 26.9-26.9 
+      26.9s-26.9-12-26.9-26.9 12-26.9 
+      26.9-26.9 26.9 12 26.9 26.9zm76.1 
+      27.2c-1.7-35.3-9.9-66.7-36.2-93-26.2-26.2-57.6-34.4-93-36.2-36.6-2.1-146.6-2.1-183.2 
+      0-35.3 1.7-66.7 9.9-93 
+      36.2S9.7 123.2 8 158.5C5.9 195.1 5.9 
+      305.1 8 341.7c1.7 35.3 9.9 66.7 36.2 
+      93s57.6 34.4 93 36.2c36.6 2.1 146.6 
+      2.1 183.2 0 35.3-1.7 66.7-9.9 93-36.2 
+      26.2-26.2 34.4-57.6 36.2-93 
+      2.1-36.6 2.1-146.6 0-183.2zM398.8 
+      388c-7.8 19.5-22.9 34.6-42.4 
+      42.4-29.4 11.7-99.2 9-132.4 
+      9s-103 .6-132.4-9c-19.5-7.8-34.6-22.9-42.4-42.4-11.7-29.4-9-99.2-9-132.4s-.6-103 
+      9-132.4c7.8-19.5 22.9-34.6 42.4-42.4 
+      29.4-11.7 99.2-9 132.4-9s103-.6 
+      132.4 9c19.5 7.8 34.6 22.9 42.4 
+      42.4 11.7 29.4 9 99.2 9 
+      132.4s.6 103-9 132.4z"/>
+                       </svg>
+                    </a>
+
+                    <a href="https://www.tiktok.com/@akhirel3on2od?_t=ZS-8xJHhK4TL6e&_r=1" target="_blank" aria-label="TikTok" class="icon tiktok">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor">
+                        <path d="M448,209.9V144h-66.2c-1.2,0-2.5-0.1-3.7-0.2c-16.5-1.6-31.5-8.2-43.7-18.3c-13.7-11.3-24.1-26.9-29.1-45.1
+      c-2.1-7.6-3.2-15.7-3.2-23.9h-66.6v330.2c0,22.2-18,40.2-40.2,40.2s-40.2-18-40.2-40.2c0-22.2,18-40.2,40.2-40.2
+      c4.2,0,8.2,0.6,12.1,1.8v-69.7c-4.1-0.5-8.2-0.8-12.4-0.8c-60.1,0-108.8,48.7-108.8,108.8S127.9,512,188,512
+      s108.8-48.7,108.8-108.8V195.8c26.1,19.3,58.3,31.6,93.2,33.8C409.2,231.3,448,209.9,448,209.9z"/>
+                        </svg>
+                    </a>
+            </div>
+            </div>
+        <header>
+        <div class="cloud-container">
+            <div class="star" style="top:10%; left:20%"></div>
+            <div class="star" style="top:30%; left:70%"></div>
+            <div class="star" style="top:50%; left:40%"></div>
+            <div class="paper-plane">
+                <i class="fas fa-paper-plane"></i>
+            </div>
+            <div class="paper-plane1">
+                <i class="fas fa-paper-plane"></i>
+            </div>
+            <div class="cloud cloud1"></div>
+            <div class="cloud cloud2"></div>
+            <div class="cloud cloud3"></div>
+        </div>
+
+            <div class="header-container">
+                <div class="header-left">
+                    <div class="cart-wrapper">
+                        <a href="#" class="cart-btn1">🛒 طلباتي</a>
+                    </div>
+                    <a href="contact.html" class="contact-link">اتصل بنا</a>
+                </div>
+
+                <div class="header-center">
+                    <a href="index.html">
+                        <img src="image Ahar El Anqoud/logo.png" alt="Carrot Logo" class="logo">
+                    </a>
+                </div>
+
+                <div class="header-right">
+                    <div class="menu-toggle" id="mobile-menu-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <nav class="main-nav">
+                        <ul>
+                            <li><a href="product-women.html">النساء</a></li>
+                            <li><a href="product-girls.html">بناتي</a></li>
+                            <li><a href="product-child.html">أولادي</a></li>
+                            <li><a href="index.html">الرئيسية</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div class="kabshan">ملابس اطفالي</div>
+        <div class="custom-gallery-wrapper">
+            <div class="custom-gallery">
+                <div class="product-card">
+                    <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-16 at 12.36.10_92179271.jpg" alt="صورة 1">
+                    <button onclick="addToCart('طقم1 أطفال', 499)">أضف للسلة</button>
+                    <p class="discrbtive">تيشيرت ناعم وخفيف، بألوان جذابة تناسب كل الأذواق</p>
+                    <p class="discrbtive-price">EGP 499</p>
+                </div>
+                <div class="product-card">
+                    <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.53_7e7c4ddb.jpg" alt="صورة 2">
+                    <button onclick="addToCart('طقم2 أطفال', 379)">أضف للسلة</button>
+                    <p class="discrbtive">خامة ممتازة بسعر اقتصادي. راحة وأناقة في قطعة واحدة!</p>
+                    <p class="discrbtive-price">EGP 379</p>
+                </div>
+                <div class="product-card">
+                    <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.51_61d866f0.jpg" alt="صورة 3">
+                     <button onclick="addToCart('بنطلون قماش', 429)">أضف للسلة</button>
+                    <p class="discrbtive">>تيشيرت قطن 100% بجودة عالية، مريح في اللبس ومناسب للاستخدام اليومي</p>
+                    <p class="discrbtive-price">EGP 429</p>
+                </div>  
+                <div class="product-card">
+                    <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-16 at 12.36.10_92179271.jpg" alt="صورة 1">
+                    <button onclick="addToCart('طقم1 أطفال', 499)">أضف للسلة</button>
+                    <p class="discrbtive">تيشيرت ناعم وخفيف، بألوان جذابة تناسب كل الأذواق</p>
+                    <p class="discrbtive-price">EGP 499</p>
+                </div>
+                <div class="product-card">
+                    <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.53_7e7c4ddb.jpg" alt="صورة 2">
+                    <button onclick="addToCart('طقم2 أطفال', 379)">أضف للسلة</button>
+                    <p class="discrbtive">خامة ممتازة بسعر اقتصادي. راحة وأناقة في قطعة واحدة!</p>
+                    <p class="discrbtive-price">EGP 379</p>
+                </div>
+                <div class="product-card">
+                    <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.53_7e7c4ddb.jpg" alt="صورة 2">
+                    <button onclick="addToCart('طقم2 أطفال', 379)">أضف للسلة</button>
+                    <p class="discrbtive">خامة ممتازة بسعر اقتصادي. راحة وأناقة في قطعة واحدة!</p>
+                    <p class="discrbtive-price">EGP 379</p>
+                </div>
+                <div class="product-card">
+                    <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.51_61d866f0.jpg" alt="صورة 3">
+                     <button onclick="addToCart('بنطلون قماش', 429)">أضف للسلة</button>
+                    <p class="discrbtive">>تيشيرت قطن 100% بجودة عالية، مريح في اللبس ومناسب للاستخدام اليومي</p>
+                    <p class="discrbtive-price">EGP 429</p>
+                </div>  
+                <div class="product-card">
+                    <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-16 at 12.36.10_92179271.jpg" alt="صورة 1">
+                    <button onclick="addToCart('طقم1 أطفال', 499)">أضف للسلة</button>
+                    <p class="discrbtive">تيشيرت ناعم وخفيف، بألوان جذابة تناسب كل الأذواق</p>
+                    <p class="discrbtive-price">EGP 499</p>
+                </div>
+                <div class="product-card">
+                    <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.53_7e7c4ddb.jpg" alt="صورة 2">
+                    <button onclick="addToCart('طقم2 أطفال', 379)">أضف للسلة</button>
+                    <p class="discrbtive">خامة ممتازة بسعر اقتصادي. راحة وأناقة في قطعة واحدة!</p>
+                    <p class="discrbtive-price">EGP 379</p>
+                </div>
+                <div class="product-card">
+                    <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.53_7e7c4ddb.jpg" alt="صورة 2">
+                    <button onclick="addToCart('طقم2 أطفال', 379)">أضف للسلة</button>
+                    <p class="discrbtive">خامة ممتازة بسعر اقتصادي. راحة وأناقة في قطعة واحدة!</p>
+                    <p class="discrbtive-price">EGP 379</p>
+                </div>
+                <div class="product-card">
+                    <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.51_61d866f0.jpg" alt="صورة 3">
+                     <button onclick="addToCart('بنطلون قماش', 429)">أضف للسلة</button>
+                    <p class="discrbtive">>تيشيرت قطن 100% بجودة عالية، مريح في اللبس ومناسب للاستخدام اليومي</p>
+                    <p class="discrbtive-price">EGP 429</p>
+                </div>  
+                <div class="product-card">
+                    <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-16 at 12.36.10_92179271.jpg" alt="صورة 1">
+                    <button onclick="addToCart('طقم1 أطفال', 499)">أضف للسلة</button>
+                    <p class="discrbtive">تيشيرت ناعم وخفيف، بألوان جذابة تناسب كل الأذواق</p>
+                    <p class="discrbtive-price">EGP 499</p>
+                </div>
+                <div class="product-card">
+                    <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.53_7e7c4ddb.jpg" alt="صورة 2">
+                    <button onclick="addToCart('طقم2 أطفال', 379)">أضف للسلة</button>
+                    <p class="discrbtive">خامة ممتازة بسعر اقتصادي. راحة وأناقة في قطعة واحدة!</p>
+                    <p class="discrbtive-price">EGP 379</p>
+                </div>
+                <div class="product-card">
+                    <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.51_61d866f0.jpg" alt="صورة 3">
+                     <button onclick="addToCart('بنطلون قماش', 429)">أضف للسلة</button>
+                    <p class="discrbtive">>تيشيرت قطن 100% بجودة عالية، مريح في اللبس ومناسب للاستخدام اليومي</p>
+                    <p class="discrbtive-price">EGP 429</p>
+                </div>  
+                <div class="product-card">
+                    <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-16 at 12.36.10_92179271.jpg" alt="صورة 1">
+                    <button onclick="addToCart('طقم1 أطفال', 499)">أضف للسلة</button>
+                    <p class="discrbtive">تيشيرت ناعم وخفيف، بألوان جذابة تناسب كل الأذواق</p>
+                    <p class="discrbtive-price">EGP 499</p>
+                </div>
+                <div class="product-card">
+                    <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.53_7e7c4ddb.jpg" alt="صورة 2">
+                    <button onclick="addToCart('طقم2 أطفال', 379)">أضف للسلة</button>
+                    <p class="discrbtive">خامة ممتازة بسعر اقتصادي. راحة وأناقة في قطعة واحدة!</p>
+                    <p class="discrbtive-price">EGP 379</p>
+                </div>
+                <div class="product-card">
+                    <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.51_61d866f0.jpg" alt="صورة 3">
+                     <button onclick="addToCart('بنطلون قماش', 429)">أضف للسلة</button>
+                    <p class="discrbtive">>تيشيرت قطن 100% بجودة عالية، مريح في اللبس ومناسب للاستخدام اليومي</p>
+                    <p class="discrbtive-price">EGP 429</p>
+                </div>  
+                <div class="product-card">
+                    <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-16 at 12.36.10_92179271.jpg" alt="صورة 1">
+                    <button onclick="addToCart('طقم1 أطفال', 499)">أضف للسلة</button>
+                    <p class="discrbtive">تيشيرت ناعم وخفيف، بألوان جذابة تناسب كل الأذواق</p>
+                    <p class="discrbtive-price">EGP 499</p>
+                </div>
+                <div class="product-card">
+                    <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.53_7e7c4ddb.jpg" alt="صورة 2">
+                    <button onclick="addToCart('طقم2 أطفال', 379)">أضف للسلة</button>
+                    <p class="discrbtive">خامة ممتازة بسعر اقتصادي. راحة وأناقة في قطعة واحدة!</p>
+                    <p class="discrbtive-price">EGP 379</p>
+                </div>
+                <div class="product-card">
+                    <img src="image Ahar El Anqoud\image Home-swap\WhatsApp Image 2025-06-17 at 13.28.51_61d866f0.jpg" alt="صورة 3">
+                     <button onclick="addToCart('بنطلون قماش', 429)">أضف للسلة</button>
+                    <p class="discrbtive">>تيشيرت قطن 100% بجودة عالية، مريح في اللبس ومناسب للاستخدام اليومي</p>
+                    <p class="discrbtive-price">EGP 429</p>
+                </div>  
+            </div>    
+        </div>
+        <div class="kids-caption">
+            <h2>اكتشفوا عالم الأناقة والراحة لأطفالكم!</h2>
+            <p>
+    في "آخر العنقود"، نختار لأطفالكم بعناية أجمل التصاميم وأرقى الخامات لتضمنوا لهم إطلالة مميزة وراحة تدوم طوال اليوم.
+    <br>
+    تسوّقوا الآن وخلّي كل لحظة أنيقة ومليانة بهجة. 🌟
+            </p>
+        </div>
+        <footer class="main-footer">
+            <div class="footer-container">
+                <div class="footer-column about-us">
+                    <h2>آخر العنقود</h2>
+                    <p>متجر متخصص في ملابس النساء والأطفال، نقدم أحدث صيحات الموضة بجودة عالية وأسعار تنافسية لتناسب كل أفراد العائلة.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/share/1JNJjoppas/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/..." target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@akhirel3on2od" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>تصفح الأقسام</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">الصفحة الرئيسية</a></li>
+                        <li><a href="product-women.html">قسم النساء</a></li>
+                        <li><a href="product-child.html">قسم الأطفال</a></li>
+                        <li><a href="#">العروض والخصومات</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column contact-info">
+                    <h3>تواصل معنا</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> العنوان: بني سويف - الواسطى - شارع ...</p>
+                    <p>
+                        <i class="fas fa-phone"></i> موبايل: 
+                        <a href="tel:01154236872" class="contact-link">01154236872</a>
+                    </p>
+                    
+                    <p>
+                        <i class="fas fa-envelope"></i> البريد: 
+                        <a href="mailto:support@akhirel3on2od.com" class="contact-link">support@akhirel3on2od.com</a>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>جميع الحقوق محفوظة &copy; 2026 آخر العنقود - تم التطوير بكل حب</p>
+            </div>
+        </footer>
+        <script src="Script\Main.js"></script>
+    </body>
+</html>

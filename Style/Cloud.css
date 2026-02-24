@@ -1,0 +1,79 @@
+
+/* حاوية السحاب */
+.cloud-container {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    background: #87CEEB; /* لون السماء الأزرق */
+    overflow: hidden;
+}
+
+/* شكل السحابة الأساسي */
+.cloud {
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    background: #fff;
+    border-radius: 50px;
+    opacity: 0.8;
+    animation: moveClouds linear infinite;
+}
+
+/* رسم "قبة" السحابة باستخدام pseudo-elements */
+.cloud::after, .cloud::before {
+    content: '';
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+}
+/* --- النجوم المتلألئة --- */
+.star {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 10px white;
+    animation: twinkle 2s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.5); }
+}
+/* --- الطائرة الورقية (الحركة العشوائية) --- */
+.paper-plane {
+    position: absolute;
+    color: #ff3b3b; 
+    font-size: 24px;
+    z-index: 10;
+    animation: flyPath 15s infinite linear;
+}
+.paper-plane1 {
+    position: absolute;
+    color: #f84d61; 
+    font-size: 24px;
+    z-index: 10;
+    animation: flyPath 20s infinite linear;
+}
+@keyframes flyPath {
+    0% { transform: translate(-100px, 100px) rotate(10deg); }
+    25% { transform: translate(30vw, 50px) rotate(-5deg); }
+    50% { transform: translate(60vw, 150px) rotate(15deg); }
+    75% { transform: translate(85vw, 80px) rotate(-10deg); }
+    100% { transform: translate(110vw, 120px) rotate(10deg); }
+}
+
+.cloud::after { width: 70px; height: 70px; top: -35px; left: 20px; }
+.cloud::before { width: 50px; height: 50px; top: -25px; left: 70px; }
+
+/* توقيتات وأماكن مختلفة للسحب لتظهر بشكل عشوائي */
+.cloud1 { top: 50px; animation-duration: 25s; }
+.cloud2 { top: 120px; animation-duration: 40s; opacity: 0.5; transform: scale(0.8); }
+.cloud3 { top: 20px; animation-duration: 30s; transform: scale(1.2); }
+
+/* أنيميشن التحريك */
+@keyframes moveClouds {
+    from { right: -200px; } /* تبدأ من خارج الشاشة يميناً */
+    to { right: 100%; }     /* تنتهي خارج الشاشة يساراً */
+}
