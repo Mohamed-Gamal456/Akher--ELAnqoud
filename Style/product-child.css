@@ -1,0 +1,364 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: rgb(253, 251, 251);
+    font-family: 'cairo';
+}
+
+.kabshan {
+    height: 60px;
+    display: flex;
+    align-items: center;       
+    justify-content: center;  
+    margin-top: 60px;
+    direction: rtl;
+    color: rgb(26, 25, 25); 
+    font-size: 25px;
+    font-weight:bold; 
+}
+.custom-gallery-wrapper {
+  width: 100%;
+  padding-left: 13%;
+  padding-right: 13%;
+  margin-top: 25px;
+  box-sizing: border-box;
+}
+.custom-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap:  10px 5px;
+  justify-content: center;
+}
+.product-card {
+  border-radius: 2px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.product-card img:hover {
+  transform: scale(1.03);
+  transition-duration: 1s;
+}
+
+.product-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+.discrbtive {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 10px 0 5px;
+  padding: 0 10px;
+  color: #222;
+  margin-bottom: 5px;
+}
+.discrbtive-price {
+  font-size: 13px;
+  color: #666;
+  padding: 0 10px 10px;
+}
+.discrbtive-price:hover {
+  color: #0b0b0b;
+  transform: scale(1.2);
+}
+.kids-caption {
+  text-align: center;
+  padding: 30px 10px;
+  background-color: #fef6f8;
+  border-top: 2px solid #f3c1d1;
+  margin-top: 40px;
+  font-family: 'Cairo', sans-serif;
+}
+
+.kids-caption h2 {
+  color: #d63384;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.kids-caption p {
+  color: #444;
+  font-size: 16px;
+  line-height: 1.7;
+}
+/* ===============-------------------- content ----------------------============== */
+/* --- تنسيق شريط الترتيب (Toolbar) --- */
+.products-toolbar {
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    padding: 15px 20px;
+    direction: rtl;
+}
+.toolbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.description-caption {
+    font-size: 14px;
+    color: #777;
+    margin: 0;
+}
+#sort-select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-family: 'Cairo', sans-serif;
+}
+
+/* --- تنسيق المنطقة الرئيسية --- */
+.main-products-section {
+    padding: 40px 0;
+    background: #fdfdfd;
+    direction: rtl;
+}
+.content-wrapper {
+    max-width: 1250px;
+    margin: 0 auto;
+    display: flex;
+    gap: 30px;
+}
+
+/* الجانب الأيمن (Sidebar) */
+.sidebar-filters {
+    width: 25%;
+    flex-shrink: 0;
+}
+.filter-box {
+    background: #fff;
+    padding: 20px;
+    border: #232323 solid 1px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+.filter-box h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ff3b3b;
+    display: inline-block;
+}
+/* --- تنسيق قائمة الفئات الجديد --- */
+.sub-categories { 
+    list-style: none; 
+    padding: 0; 
+}
+
+.sub-categories li { 
+    margin-bottom: 12px; 
+}
+
+.filter-btn {
+    background: none;
+    border: none;
+    padding: 5px 0;
+    font-family: 'Cairo', sans-serif; /* لضمان تناسق الخط العربي */
+    font-size: 16px;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    width: 100%;
+    text-align: right; /* عشان الكلام يبدأ من اليمين */
+    position: relative;
+}
+
+/* حالة التمرير (Hover) */
+.filter-btn:hover {
+    color: #ff3b3b;
+    padding-right: 10px; /* التحريك الجانبي اللي كنت عامله */
+}
+
+/* الحالة النشطة (لما يكون القسم مختار فعلاً) */
+.filter-btn.active {
+    color: #ff3b3b;
+    font-weight: bold;
+    padding-right: 15px;
+}
+
+/* إضافة شرطة صغيرة (Bullet) تظهر فقط بجانب القسم المختار */
+.filter-btn.active::before {
+    content: "•";
+    position: absolute;
+    right: 0;
+    color: #ff3b3b;
+}
+
+/* لإلغاء أي حدود زرقاء بتظهر وقت الضغط (Outline) */
+.filter-btn:focus {
+    outline: none;
+}
+.size-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+.size-btn {
+    padding: 8px;
+    border: 1px solid #ddd;
+    background: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+.size-btn:hover { background: #ff3b3b; color: white; border-color: #ff3b3b; }
+
+/* الجانب الأيسر (شبكة المنتجات) */
+.products-display { width: 75%; }
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 منتجات في الصف كما طلبت */
+    gap: 10px;
+}
+
+/* كارت المنتج */
+.product-card {
+    background: #fff;
+    overflow: hidden;
+    transition: 0.3s;
+    border: 1px solid #f0f0f0;
+    display: flex;
+    flex-direction: column; /* لترتيب العناصر فوق بعضها */
+    position: relative;
+}
+.badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+}
+.badge.new { background: #27ae60; }
+
+.product-image-box {
+    position: relative;
+    height: 280px; /* قللت الطول قليلاً ليتناسب مع التصميم الجديد */
+    overflow: hidden;
+}
+
+.product-image-box img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    transition: 0.5s;
+}
+/* --- الاسم فوق الصورة --- */
+.product-title-on-image {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(transparent, rgba(0,0,0,0.25)); /* تدرج لجعل النص واضحاً */
+    padding: 20px 10px 10px;
+    color: white;
+    text-align: center;
+}
+
+.product-title-on-image h4 {
+    margin: 0;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* --- السعر تحت الصورة --- */
+.product-price-info {
+    padding: 10px;
+    text-align: center;
+    background: #fff;
+}
+
+.current-price { color: #ff3b3b; font-weight: bold; font-size: 17px; }
+.old-price { color: #aaa; text-decoration: line-through; font-size: 13px; margin-right: 5px; }
+/* --- الأزرار تحت خالص --- */
+.product-actions-bottom {
+    display: flex;
+    gap: 5px;
+    padding: 5px;
+    /* border-top: 1px solid #eee; */
+}
+
+.product-actions-bottom .action-btn {
+    flex: 1; /* لتوزيع الأزرار بالتساوي */
+    border-radius: 8px;
+    padding: 5px;
+    font-size:large;
+}
+.product-card:hover img {
+    transform: scale(1.05); /* زووم بسيط للصورة */
+}
+
+.add-cart { background: #27ae60; color: white; }
+.view-details { background: #34495e; color: white; }
+
+.product-info { padding: 15px; text-align: center; }
+.product-title { font-size: 15px; color: #444; margin-bottom: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.current-price { color: #ff3b3b; font-weight: bold; font-size: 18px; }
+.old-price { color: #aaa; text-decoration: line-through; font-size: 14px; margin-right: 8px; }
+
+/* --- الموبايل --- */
+@media (max-width: 768px) {
+    .content-wrapper { flex-direction: column; }
+    .sidebar-filters { width: 100%; order: 2; }
+    .products-display { width: 100%; order: 1; }
+    .toolbar-container { flex-direction: column; gap: 10px; text-align: center; }
+    /* شبكة المنتجات في الموبايل */
+    .products-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 1px; /* زود الـ gap حاجة بسيطة عشان الكروت متلزقش */
+        padding: 2px;
+    }
+
+    .product-card {
+        margin-bottom: 10px;
+        height: auto; /* خليه يتحدد بناءً على المحتوى */
+    }
+
+    /* حل مشكلة الصورة */
+    .product-image-box { 
+        height: 200px; /* طول مناسب جداً للموبايل */
+        position: relative;
+        overflow: hidden;
+    }
+
+    .product-image-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        /* نلغي أي تحويل قديم ونثبت الجديد */
+        transform: none !important; 
+        transition: transform 0.5s ease-in-out;
+    }
+
+    /* تفعيل الزووم عند اللمس في الموبايل */
+    .product-card:active img, 
+    .product-card:focus img {
+        transform: scale(1.08) !important;
+    }
+    
+    /* تصغير الخطوط في الموبايل عشان التصميم ميبوظش */
+    .product-title-on-image h4 {
+        font-size: 12px;
+    }
+    .current-price {
+        font-size: 15px;
+    }
+
+}
+
+
+/* ========== Media Query للموبايل ========== */
+@media (max-width: 768px) {
+
+}
