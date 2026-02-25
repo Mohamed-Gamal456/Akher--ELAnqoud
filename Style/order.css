@@ -1,0 +1,121 @@
+:root {
+    --akhirel3on2od-red: #ff0000;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body { background-color: #fff; }
+
+.cart-main-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+.cart-title {
+    font-size: 24px;
+    color:#1a1a1a;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* تنسيق الجدول */
+.table-wrapper { overflow-x: auto; }
+.cart-table { width: 100%; border-collapse: collapse; background: white; }
+
+.cart-table th {
+    background: #fcfcfc;
+    padding: 15px;
+    border: 1px solid #ececec;
+    color: #666;
+    font-size: 14px;
+}
+
+.cart-table td {
+    padding: 15px;
+    border: 1px solid #ececec;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* العناصر داخل الجدول */
+.cart-thumb {
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.sku-cell, .size-cell { font-weight: 600; color: #444; }
+
+.qty-input {
+    width: 50px;
+    padding: 6px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.row-total-red {
+    color: var(--akhirel3on2od-red);
+    font-weight: bold;
+}
+
+.remove-x {
+    color: var(--akhirel3on2od-red);
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* ملخص الحساب */
+.cart-bottom-layout {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+
+.summary-card {
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #ececec;
+    padding: 20px;
+    background: #fff;
+}
+
+.summary-head { margin-top: 0; border-bottom: 2px solid #eee; padding-bottom: 10px; color:#1a1a1a; text-align: center;}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #f9f9f9;
+}
+
+.grand-total-line {
+    font-weight: bold;
+    font-size: 20px;
+    border-bottom: none;
+}
+
+/* زرار الواتساب */
+.btn-whatsapp-checkout {
+    background: var(--akhirel3on2od-red);
+    color: white;
+    width: 100%;
+    padding: 16px;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: 0.3s;
+}
+
+.btn-whatsapp-checkout:hover { background: #cc0000; }

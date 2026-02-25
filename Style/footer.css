@@ -1,0 +1,132 @@
+/* ========== footer ========== */
+.main-footer {
+    background-color: #1a1a1a; /* لون داكن فخم */
+    color: #ffffff;
+    padding: 60px 20px 20px;
+    font-family: 'Cairo', sans-serif;
+    direction: rtl;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+}
+
+.footer-column h2 {
+    color: #ff3b3b; /* اللون الأحمر المميز في موقعك */
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.footer-column h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-column h3::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #ff3b3b;
+}
+
+.footer-column p {
+    line-height: 1.8;
+    color: #ccc;
+    font-size: 15px;
+}
+
+/* روابط الفوتر */
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 6px;
+}
+
+.footer-links a {
+    color: #ccc;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: #ff3b3b;
+    padding-right: 10px;
+}
+
+/* أيقونات التواصل الاجتماعي */
+.social-icons-footer {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons-footer a {
+    width: 40px;
+    height: 40px;
+    background: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    transition: 0.4s;
+}
+
+.social-icons-footer a:hover {
+    background: #ff3b3b;
+    transform: translateY(-5px);
+}
+
+.contact-info i {
+    color: #ff3b3b;
+    margin-left: 10px;
+    width: 20px;
+}
+
+/* تنسيق روابط التواصل لتظهر بشكل أنيق */
+.ContactLink{
+    color: #ccc; /* نفس لون نصوص الفوتر */
+    text-decoration: none; /* إخفاء الخط السفلي */
+    transition: 0.3s;
+}
+
+.ContactLink:hover {
+    color: #ff3b3b; /* يتغير للون الأحمر عند التمرير مثل اللوجو */
+    text-decoration: underline; /* إظهار الخط عند التمرير فقط */
+}
+/* الحقوق السفلى */
+.footer-bottom {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    font-size: 13px;
+    color: #777;
+}
+
+/* الموبايل */
+@media (max-width: 768px) {
+    .footer-container {
+        text-align: center;
+    }
+    .footer-column h3::after {
+        right: 50%;
+        transform: translateX(50%);
+    }
+    .social-icons-footer {
+        justify-content: center;
+    }
+}
