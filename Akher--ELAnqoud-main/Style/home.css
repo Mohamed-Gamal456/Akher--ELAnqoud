@@ -1,0 +1,854 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: rgb(253, 251, 251);
+    font-family: 'Cairo', sans-serif;
+}
+/* ------------- العناصر العامة ------- */
+.slider {
+    position: relative;
+    width: 100%;
+    height: 80vh; /* يغطي 80% من طول الشاشة */
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out; /* حركة ناعمة عند التبديل */
+    display: flex;
+    align-items: center; /* تجميع المحتوى في المنتصف عمودياً */
+    justify-content: center; /* تجميع المحتوى في المنتصف أفقياً /*/
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+/* تنسيق الصورة لتملأ الشاشة */
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* لضمان عدم تمدد الصورة بشكل سيء */
+    position: absolute;
+    z-index: 1;
+}
+
+/* طبقة ظل خفيفة فوق الصورة لتحسين قراءة النص */
+.slide::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* ظل أسود خفيف */
+    z-index: 2;
+}
+
+/* تنسيق النصوص فوق الصورة */
+.hero-text {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: #ffffff;
+    padding: 0 20px;
+    font-family: 'Cairo', sans-serif; /* تأكد من استدعاء خط Cairo */
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    font-weight:normal;
+    margin-bottom: -8px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    font-weight:bold;
+    margin-bottom: -2px;
+}
+
+.hero-text span {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+/* تنسيق الزر البرتقالي (مثل Carrot) */
+.btn-shop {
+    background-color: rgb(255, 0, 0); /* لون برتقالي جذاب */
+    color: white;
+    padding: 7px 18px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 2px;
+    transition: background 0.3s;
+    border: 2px solid transparent;
+}
+
+.btn-shop:hover {
+    background-color: #e30808;
+    border-color: #ffffff;
+}
+.slide.active .hero-text {
+    animation: fadeInUp 1s ease-out forwards;
+}
+/* --- تعديلات الموبايل (Responsive) --- */
+@media (max-width: 768px) {
+    /* ضبط ارتفاع السلايدر ليناسب شاشة الموبايل */
+    .slider {
+        height: 45vh !important;  /*ارتفاع مناسب للموبايل */
+        width: 100% !important; /* إلغاء الـ 80% القديمة */
+    }
+
+    /* تصغير الأسهم جداً وجعلها في منتصف الجوانب */
+    .slider-arrow {
+        font-size: 1.2rem !important; /* تصغير حجم السهم */
+        z-index: 100;
+    }
+    .prev { left: 5px !important; }
+    .next { right: 5px !important; }
+
+    /* ضبط النصوص لمنع التكدس */
+    .hero-text {
+        width: 90%; /* إعطاء مساحة أكبر للنص*/
+    }
+
+    .hero-text h1 {
+        font-size: 1.4rem !important; /* تصغير العنوان الرئيسي */
+        margin-bottom: 5px !important;
+        line-height: 1.2;
+    }
+
+    .hero-text p {
+        font-size: 0.9rem !important; /* تصغير الوصف */
+        margin-bottom: 10px !important;
+    }
+
+    .hero-text span {
+        font-size: 0.8rem !important;
+        margin-bottom: 15px !important;
+    }
+
+    /* ضبط زر تسوق الآن */
+    .btn-shop {
+        padding: 8px 20px !important;
+        font-size: 0.9rem !important;
+        border-radius: 4px !important;
+    }
+
+    /* منع الصورة من التمدد بشكل سيء */
+    .slide img {
+        object-position: center; /* التأكد من أن وجه الموديل في المنتصف */
+    }
+}
+/* تنسيق الأسهم */
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20; /* أعلى من الصور والنصوص */
+    font-size: 2.5rem;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+}
+.prev { left: 20px; }
+.next { right: 20px; }
+/* تأثير ظهور النص من الأسفل */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* حاوية الكروت الأساسية */
+.cards-container {
+display: flex;
+justify-content: center;
+gap: 20px; /* المسافة بين الكروت */
+padding: 20px 5px;
+perspective: 1000px; /* ضروري لتأثير الـ 3D */
+margin-bottom: 50px;
+}
+
+/* الكارت الفردي */
+.flip-card {
+background-color: transparent;
+width: 30%; /* لتكون الثلاثة بجانب بعضها */
+max-width: 390px;
+height: 530px;
+cursor: pointer;
+}
+
+/* الحاوية الداخلية للوجهين */
+.flip-card-inner {
+position: relative;
+width: 100%;
+height: 100%;
+text-align: center;
+transition: transform 0.6s;
+transform-style: preserve-3d;
+box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* التأثير عند مرور الماوس */
+.flip-card:hover .flip-card-inner {
+transform: rotateY(180deg);
+}
+
+/* تنسيق الوجه الأمامي والخلفي */
+.flip-card-front, .flip-card-back {
+position: absolute;
+width: 100%;
+height: 100%;
+-webkit-backface-visibility: hidden; /* لإخفاء الوجه الخلفي عند البداية */
+backface-visibility: hidden;
+overflow: hidden;
+display: flex;
+align-items: flex-end; /* وضع النص في الأسفل */
+justify-content: center;
+}
+
+/* الوجه الأمامي */
+.flip-card-front img, .flip-card-back img {
+width: 100%;
+height: 100%;
+object-fit: cover; /* لضمان ملء الصورة للكارت */
+}
+
+/* الوجه الخلفي */
+.flip-card-back {
+transform: rotateY(180deg);
+}
+
+/* طبقة شفافة فوق الصورة لكتابة النص */
+.label-overlay {
+position: absolute;
+bottom: 0;
+width: 100%;
+background: rgba(0, 0, 0, 0.4);
+color: white;
+padding: 7px 0;
+font-family: sans-serif;
+font-weight: bold;
+font-size: 25px;
+}
+.label-overlay2 {
+position: absolute;
+bottom: 0;
+width: 100%;
+background: rgba(0, 0, 0, 0.4);
+color: rgb(255, 16, 16);
+padding: 7px 0;
+font-family: sans-serif;
+font-weight: bold;
+font-size: 25px;
+}
+
+/* إعدادات خاصة للهاتف لضمان بقائهم بجانب بعضهم */
+@media screen and (max-width: 1080px) {
+    .cards-container {
+        gap: 15px; 
+        padding: 20px 0;
+    }
+    .flip-card {
+        height: 440px; /* تقليل الطول في الموبايل */
+    }
+}
+@media screen and (max-width: 830px) {
+    .cards-container {
+        gap: 16px; 
+        padding: 20px 0;
+    }
+    .flip-card {
+        height: 380px; /* تقليل الطول في الموبايل */
+    }
+}
+@media screen and (max-width: 645px) {
+    .cards-container {
+        gap: 16px; 
+        padding: 20px 0;
+    }
+    .flip-card {
+        height: 280px; /* تقليل الطول في الموبايل */
+    }
+}
+@media screen and (max-width: 500px) {
+.cards-container {
+    gap: 12px; 
+    padding: 20px 0;
+}
+.flip-card {
+    height: 200px; /* تقليل الطول في الموبايل */
+}
+.label-overlay {
+    font-size: 12px;
+    padding: 5px 0;
+}
+}
+
+/* ------------test card----------------*/
+/*////////////////////////////////////////////////////test cards///////////////////////////*/
+/* حاوية قسم المنتجات بالكامل */
+.all-products-section {
+    padding: 40px 1%;
+    background-color: #fdfbfb;
+    direction: rtl;
+}
+
+.section-header h2 {
+    font-family: 'Cairo', sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    color: #1e293b;
+    border-right: 5px solid #ff0000; /* علامة جمالية جنب العنوان */
+    padding-right: 15px;
+}
+/* نظام الشبكة (The Grid) */
+.products-grid {
+    display: grid;
+    /* موبايل: كارتين جنب بعض */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 8px;
+}
+
+.card {
+    direction: rtl;
+    width: 100%; /* خليه دايما ياخد مساحة العمود اللي هو فيه */
+    height: 100%; /* عشان كل الكروت تبقى طول واحد في الصف */
+    border-radius: 15px; 
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+     
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.15);
+}
+
+
+.product-image {
+    position: relative;
+    width: 100%;
+    height: auto; 
+}
+.product-image img {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+    object-fit: contain; /* جرب contain لو مش عاوز الصورة تتقص، أو cover لو عاوزها تملأ المربع */
+    display: block;
+}
+.product-image img:hover {
+  transform: scale(1.03);
+  transition-duration: 1s;
+}
+.product-badge {
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    padding: 5px 12px;
+    background: #22c55e;
+    color: #fff;
+    font-size: 0.70rem;
+    font-weight: bold;
+    border-radius: 15px;
+}
+.product-content {
+    background: #fff;
+    padding: 8px 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.product-meta-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: 0.80rem;
+}
+
+.product-category { color: #64748b; font-weight: 500; }
+.product-sku { color: #94a3b8; }
+
+.product-title {
+    color: #1e293b;
+    font-size: 1.0rem;
+    font-weight: 700;
+    overflow: hidden;
+    line-height: 1.4;
+}
+
+.product-price {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.current-price { color: #ff0000; font-size: 1.2rem; font-weight: 650; }
+.original-price { color: #94a3b8; text-decoration: line-through; font-size: 0.90rem; }
+.discount { color: #22c55e; font-size: 0.85rem; font-weight: bold; }
+
+.option-group { margin-bottom: 5px; }
+.option-label { font-size: 0.85rem; color: #64748b; display: block; margin-bottom: 5px; }
+
+.color-list, .size-list { display: flex; gap: 7px; }
+
+.color-option {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.size-option {
+    padding: 5px 8px;
+    background: #1e293b;
+    color: #fff;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    cursor: pointer;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.button {
+    flex: 1;
+    padding: 13px 4px;
+    border-radius: 12px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+}
+    
+.cart-btn { background: #3b82f6; color: #fff; }
+.cart-btn:hover { background: #2563eb; transform: translateY(-2px); }
+.whatsapp-btn { background: #22c55e; color: #fff; }
+.whatsapp-btn:hover { background: #1fad53; transform: translateY(-2px); }
+.load-more-container {
+    text-align: left; /* الكلمة تروح للشمال */
+    padding: 0px 5%;
+}
+.btn-text-only {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px; /* مسافة بين الكلمة والسهم */
+    background: none;
+    border: none;
+    color: #ff0101;
+    font-family: 'Cairo', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 5px 0;
+    transition: all 0.3s ease;
+}
+
+/* تنسيق السهم */
+.icon-arrow {
+    font-size: 0.8rem;
+    transition: transform 0.5s ease; /* عشان لما يلف يبقى ناعم */
+    animation: bounce 2s infinite; /* حركة طلوع ونزول مستمرة */
+}
+.btn-text-only:hover {
+    letter-spacing: 0.5px; /* حركة شيك للكلمة عند الهوفر */
+    color: #f10303;
+}
+/* حركة الـ Bounce الاحترافية */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(5px);}
+    60% {transform: translateY(3px);}
+}
+
+/* كلاس هنضيفه بالـ JS لما نضغط "عرض أقل" يخلي السهم يبص لفوق */
+.btn-text-only.active .icon-arrow {
+    transform: rotate(180deg);
+    animation: none; /* نوقف الحركة لما يلف لفوق */
+}
+/* تنسيق الحاوية لتكون مستعدة للأنيميشن */
+.grid-item {
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* حركة ناعمة جداً */
+}
+
+/* حالة الاختفاء (قبل الظهور) */
+.card-hidden {
+    opacity: 0;
+    transform: translateY(20px); /* الكارت يبدأ من تحت شوية */
+    pointer-events: none; /* عشان ميكونش قابل للضغط وهو مختفي */
+    max-height: 0;
+    margin-bottom: 0 !important;
+    overflow: hidden;
+}
+
+/* حالة الظهور */
+.card-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    max-height: 1000px; /* رقم كبير كفاية لمحتوى الكارت */
+    margin-bottom: 12px;
+}
+/* لابتوب وشاشات كبيرة: 4 كروت */
+@media (max-width: 1180px) {
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .product-title {
+        font-size: 0.9rem;
+    }
+
+}
+/* تابلت: 3 كروت */
+@media (max-width: 888px) { 
+    .section-header h2 {
+        font-size: 1.4rem;
+    }
+    .grid-item{
+        margin-bottom: 12px;
+    }
+    .product-badge {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        padding: 5px 10px;
+        font-size: 0.65rem;
+    }
+    .product-content {
+        padding: 8px 10px;
+    }
+    .product-meta-row {
+        margin-bottom: 2px;
+        font-size: 0.8rem;
+    }
+
+    .product-title {
+        font-size: 0.88rem;
+        font-weight: 650;
+    }
+
+    .current-price { font-size: 1.08rem; font-weight: 700; }
+    .original-price { font-size: 0.88rem; }
+    .discount { font-size: 0.88rem;  }
+    .option-label { font-size: 0.88rem; margin-bottom: 3px; }
+    .color-list, .size-list { gap: 5px; }
+
+    .color-option {
+        width: 18px; height: 18px;
+    }
+
+    .size-option {
+        padding: 5px;
+        border-radius: 5px;
+        font-size: 0.75rem;
+    }
+    .button { font-size: 0.9rem; } 
+    
+    .products-grid {
+        gap: 5px;
+    }
+}
+@media (max-width: 775px) { 
+    .button { font-size: 0.70rem; } 
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+}
+/* تعديل بسيط للموبايل الصغير جداً */
+@media (max-width: 580px) { 
+    .section-header h2 {
+        font-size: 1.3rem;
+    }
+    .card{
+        border-radius: 15px;
+    }
+    .grid-item{
+        margin-bottom: 12px;
+    }
+    .product-badge {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        padding: 5px 10px;
+        font-size: 0.50rem;
+    }
+    .product-content {
+        padding: 8px 10px;
+    }
+    .product-meta-row {
+        margin-bottom: 2px;
+        font-size: 0.75rem;
+    }
+
+    .product-category { font-weight: 400; }
+
+    .product-title {
+        font-size: 0.70rem;
+        font-weight: 600;
+    }
+
+    .current-price { font-size: 0.90rem; font-weight: 600; }
+    .original-price { font-size: 0.75rem; }
+    .discount { font-size: 0.70rem;  }
+    .option-label { font-size: 0.75rem; margin-bottom: 3px; }
+    .color-list, .size-list { gap: 5px; }
+
+    .color-option {
+        width: 14px; height: 14px;
+    }
+
+    .size-option {
+        padding: 2px;
+        border-radius: 5px;
+        font-size: 0.70rem;
+    }
+    .products-grid {
+        gap: 1.5px;
+    }
+    .button {
+        padding: 5px;
+    }
+    .btn-text-only {
+        font-size: 0.99rem;
+    }
+}
+
+
+/* /////////////////////////////////////////////////////تنسيق الحاوية المتحركه */
+/* تنسيقات القسم الرئيسي */
+/* تنسيقات القسم الرئيسي */
+.best-seller-section {
+    padding: 40px 2%;
+    background-color: #fdfbfb;
+    overflow: hidden;
+}
+
+.section-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.section-header h2 {
+    font-size: 1.5rem;
+    color: #1e293b;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+/* حاوية السلايدر */
+.best-seller-container {
+    position: relative;
+    width: 100%;
+}
+
+.best-seller-slider {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    direction: ltr;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-snap-type: x mandatory;
+    padding: 10px 5px 25px 5px;
+}
+
+/* إخفاء السكرول */
+.best-seller-slider::-webkit-scrollbar {
+    display: none;
+}
+
+/* ✅ حجم الكارت (Desktop / Laptop) */
+.slider-item {
+    flex: 0 0 310px; /* عرض ثابت */
+    max-width: 310px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    transition: transform 0.3s ease;
+}
+
+/* أزرار التحكم */
+.slider-controls {
+    display: flex;
+    gap: 12px;
+}
+
+.control-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid #eee;
+    background: #fff;
+    color: #333;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.control-btn:hover {
+    background: #ff0000;
+    color: #fff;
+    border-color: #ff0000;
+    transform: translateY(-2px);
+}
+
+/* ✅ Tablet */
+@media (max-width: 992px) {
+    .slider-item {
+        flex: 0 0 280px;
+        max-width: 280px;
+    }
+}
+
+
+
+
+/*///////////////////////////caption///////////////////*/
+.home-caption {
+  text-align: center;
+  padding: 40px 15px;
+  background-color: #f9f9f9;
+  border-top: 2px solid #ddd;
+  font-family: 'Cairo', sans-serif;
+  margin-top: 40px;
+}
+
+.home-caption h2 {
+  font-size: 24px;
+  color: #111;
+  margin-bottom: 15px;
+}
+
+.home-caption p {
+  font-size: 16px;
+  color: #444;
+  line-height: 1.8;
+}
+
+.shop-now-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 25px;
+  background-color: #ff3b3b;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.shop-now-btn:hover {
+  background-color: #d83434;
+}
+/* ========== Media Query للموبايل ========== */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        height: auto;
+    }
+    .logo-logo img {
+    width: 95px;
+    height: 45px;
+    }
+    .nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .container {
+        flex-direction: column;
+        overflow-x: hidden;
+    }
+
+    .img-home {
+        margin-top: 10px;
+    }
+
+    .shopping-img img {
+        width: 95%;
+    }
+
+    .container-clothes {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sequances {
+        font-size: 18px;
+    }
+
+    .product-card {
+        width: 95%;
+    }
+    .slider{
+      width: 80%;
+    }
+    .container-card {
+        width: 95%;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+    }
+
+    footer div {
+        width: 100%;
+    }
+    .custom-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1px;
+    }
+    .custom-gallery-wrapper {
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+    .product-card img {
+        height: 190px;
+    }
+}
